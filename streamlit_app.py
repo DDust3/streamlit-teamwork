@@ -1,17 +1,12 @@
 import os
-# import sys
-# sys.path.append("C:\\Users\\fisho\\recipe_suggestion\\venv\\Lib\\site-packages")
 from dotenv import load_dotenv
 import dotenv
 import streamlit as st
-import fitz  # PyMuPDF
+import fitz
 import openai
 
-# .env 파일에서 환경 변수 로드
 load_dotenv()
 
-
-# 환경 변수에서 OpenAI API 키를 가져옵니다.
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
@@ -44,7 +39,7 @@ def get_recipe_from_openai(dish_name):
 def main():
     st.title("🍲 요리 레시피 검색기")
     
-    file_path = "cook1.pdf"  # 현재 디렉토리에 있는 PDF 파일의 경로
+    file_path = "cook1.pdf"
     text = extract_text_from_pdf(file_path)
     dishes = extract_dishes_from_text(text)
     
